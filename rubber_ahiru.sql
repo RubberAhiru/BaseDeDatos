@@ -181,7 +181,7 @@ CREATE TABLE `personalizado` (
 
 CREATE TABLE `pertenece` (
   `id_vianda` int(11) NOT NULL COMMENT 'identificador proveniente de la tabla vianda',
-  `id_menu` int(11) NOT NULL COMMENT 'identificador proveniente de la tabla menú'
+  `id_dieta` int(11) NOT NULL COMMENT 'identificador proveniente de la tabla dieta'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -361,8 +361,8 @@ ALTER TABLE `personalizado`
 -- Indices de la tabla `pertenece`
 --
 ALTER TABLE `pertenece`
-  ADD PRIMARY KEY (`id_vianda`,`id_menu`),
-  ADD KEY `FK5` (`id_menu`);
+  ADD PRIMARY KEY (`id_vianda`,`id_dieta`),
+  ADD KEY `FK5` (`id_dieta`);
 
 --
 -- Indices de la tabla `proceso`
