@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-07-2023 a las 00:39:18
+-- Tiempo de generación: 23-07-2023 a las 01:31:41
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.3.23
 
@@ -31,7 +31,9 @@ CREATE TABLE `caja_menu` (
   `id` int(11) NOT NULL COMMENT 'identificador de la caja de menú',
   `id_proceso` int(11) NOT NULL COMMENT 'identificador el proceso que esta actuando en este momento en la caja',
   `lote` date NOT NULL COMMENT 'fecha de elaboración',
-  `exp` date NOT NULL COMMENT 'fecha de expiración o vencimiento'
+  `exp` date NOT NULL COMMENT 'fecha de expiración o vencimiento',
+  `fecha_ini` date NOT NULL COMMENT 'fecha de inicio del proceso',
+  `fecha_fin` date NOT NULL COMMENT 'fecha de finalización del proceso'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -180,8 +182,8 @@ CREATE TABLE `personalizado` (
 --
 
 CREATE TABLE `pertenece` (
-  `id_vianda` int(11) NOT NULL COMMENT 'identificador proveniente de la tabla vianda',
-  `id_dieta` int(11) NOT NULL COMMENT 'identificador proveniente de la tabla dieta'
+  `id_vianda` int(11) NOT NULL COMMENT 'identificación de la vianda',
+  `id_dieta` int(11) NOT NULL COMMENT 'identificador de la dieta'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -362,7 +364,7 @@ ALTER TABLE `personalizado`
 --
 ALTER TABLE `pertenece`
   ADD PRIMARY KEY (`id_vianda`,`id_dieta`),
-  ADD KEY `FK5` (`id_dieta`);
+  ADD KEY `FK4` (`id_dieta`);
 
 --
 -- Indices de la tabla `proceso`
@@ -528,8 +530,8 @@ ALTER TABLE `personalizado`
 -- Filtros para la tabla `pertenece`
 --
 ALTER TABLE `pertenece`
-  ADD CONSTRAINT `FK4` FOREIGN KEY (`id_vianda`) REFERENCES `vianda` (`id`),
-  ADD CONSTRAINT `FK5` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id`);
+  ADD CONSTRAINT `FK4` FOREIGN KEY (`id_dieta`) REFERENCES `dieta` (`id`),
+  ADD CONSTRAINT `FK5` FOREIGN KEY (`id_vianda`) REFERENCES `vianda` (`id`);
 
 --
 -- Filtros para la tabla `realiza`
