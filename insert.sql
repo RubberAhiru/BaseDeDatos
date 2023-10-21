@@ -79,7 +79,34 @@ INSERT INTO `dieta`(`id`, `nombre`, `descrip`) VALUES ("12","apivegetariana","No
 INSERT INTO `dieta`(`id`, `nombre`, `descrip`) VALUES ("13","flexivegetariana","Tambien conocido como semivegano es una dieta que puede incluir un poco de carne ocacionalmente.");
 
 //viandas
-INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("1","pasta italiana","30","150","pasta-italiana.png","espaguetis con salsa tomate y morron rojo");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("1","pasta italiana","30","150","1.png","espaguetis con salsa tomate y morron rojo");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("2","fideos con tuco","35","250","2.png","fideos rulos con tuco de pollo grill");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("","","","",".png","");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("4","comida completa","40","300","4.png","arroz blanco, pan integral, tuco con carne, perejil, cebolla y lechuga");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("5","arroz con camarones","40","250","5.png","arroz con huevo frito revuelto, camarones, cemillas de chia");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("6","spaguetti con salsa","30","250","6.png","spaguetti con salsa de tomate y cubierto de una buena porcion de salsa blanca");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("7","arroz pure con carne y guarnicion","40","300",".png","arroz blanco con semillas, pure de papa, tomates cherry lechuga, queso y carne hervida");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("8","hambuguesa de pescado","40","350","8.png","pan, milanesa de pescado, pure, lechuga, perejil, zapallito");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("9","","","","9.png","");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("11","taco verde","35","300","11.png","tacos de espinaca, pepino, cebolla y pezcado");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("12","tacos","","","12.png","");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("13","tacos de aroz de cebolla","35","250","13.png"," , aroz de cebolla, perejil, cebolla y morron");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("14","tacos de zanahoria y cebolla","30","200","14.png","taco, zanahorias, cebolla y queso");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("15","tacos agridulces","30","250","15.png","taco de verduras y miel");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("16","tacos de pollo ","35","250","16.png","taco, pechuga de pollo, verduras, queso y mayonesa");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("17","tacos de ","35","250","17.png","taco, x, verduras y queso");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("18","tacos de ","35","250","18.png","taco, x, verduras y queso");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("20","pideos al camaron","40","250","20.png","fideos chinos con camarones, morron, perejil y chia");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("21","ensalada agridulce","45","200","21.png","ensalada de zanaorias, pollo hervido-empanado, tomates, morron, cemillas, durazno y zapallito");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("22","el sol","30","150","22.png","fideos gruesos con huevo en su punto y panceta");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("23","ñoquis con nuez","35","200","23.png","ñoquis con nueces, albahaca y queso");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("24","sushi","35","300","24.png","arroz, algas, verduras, atún");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("25","ensalada de mariscos","30","200","25.png","albahaca, camarones, mejillones, cesamo, cebolla y tomates cherry");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("26","el trozon","30","150","26.png","trozo de carne vacuna con hongos, brocoli y coliflor");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("27","pez triangular","25","150","27.png","nuggets de merluza");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("28","pinchos de carne","25","150","28.png","carne, queso,cebolla y tomate");
+
+
 
 INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("2","","","","","");
 
