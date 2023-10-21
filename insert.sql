@@ -138,16 +138,15 @@ INSERT INTO `ingresa`(`id_caja`, `id_proceso`, `fecha_ini`, `fecha_fin`) VALUES 
 INSERT INTO `pedido`(`id`, `fecha`, `hora`, `id_tarjeta`, `id_suc`) VALUES ("","","","","");
 
 //proceso
-INSERT INTO `proceso`(`id`, `estado`) VALUES ("1","");
-INSERT INTO `proceso`(`id`, `estado`) VALUES ("2","");
-INSERT INTO `proceso`(`id`, `estado`) VALUES ("3","");
-INSERT INTO `proceso`(`id`, `estado`) VALUES ("4","");
-INSERT INTO `proceso`(`id`, `estado`) VALUES ("5","");
-INSERT INTO `proceso`(`id`, `estado`) VALUES ("6","");
-INSERT INTO `proceso`(`id`, `estado`) VALUES ("7","");
+INSERT INTO `proceso`(`id`, `estado`) VALUES ("1","Solicitado");
+INSERT INTO `proceso`(`id`, `estado`) VALUES ("2","En stock");
+INSERT INTO `proceso`(`id`, `estado`) VALUES ("3","En produccioón");
+INSERT INTO `proceso`(`id`, `estado`) VALUES ("4","Envasado");
+INSERT INTO `proceso`(`id`, `estado`) VALUES ("5","Entregado");
+INSERT INTO `proceso`(`id`, `estado`) VALUES ("6","Devuelto");
+INSERT INTO `proceso`(`id`, `estado`) VALUES ("7","Desechado");
 
 //estado
-INSERT INTO `estado`(`id`, `nombre`) VALUES ("","");
 INSERT INTO `estado`(`id`, `nombre`) VALUES ("1", "Solicitado");
 INSERT INTO `estado`(`id`, `nombre`) VALUES ("2", "Confirmado");
 INSERT INTO `estado`(`id`, `nombre`) VALUES ("3", "Enviado");
