@@ -1,0 +1,34 @@
+/*Consultas Obligatorias*/
+
+1.Menús realizados el día de hoy
+
+SELECT id_menu FROM `caja_menu`,envasa WHERE caja_menu.id = envasa.id_caja AND lote = CURRENT_DATE;
+
+2.Nombre, mail y/o teléfono de los clientes que NO hicieron pedidos el mes pasado:
+
+
+3.Histórico de estados de un determinado pedido:
+
+
+4.Días que faltan para que las cajas que contienen menú alcancen su fecha de vencimiento, ordenadas por menú:
+
+
+5.Comidas que integran un menú determinado:
+
+
+6.Listado de menús semanales, quincenales y mensuales:
+
+
+7.Mostrar el estado en el que se encuentran los pedidos del mes en curso al día de hoy, es decir, nombre del cliente, número de pedido y nombre del estado:
+
+
+8.Cuantas cajas hay que producir para alcanzar el stock máximo de cada menú:
+
+
+9.Nombre, mail y/o teléfono de los 3 clientes que realizaron más pedidos en el año:
+
+
+10.Nombre y dirección de los clientes que hicieron pedidos para entregar hoy ordenados o agrupados por Zona:
+
+
+
