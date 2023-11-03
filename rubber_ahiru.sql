@@ -43,7 +43,7 @@ CREATE TABLE `caja_menu` (
 CREATE TABLE `cliente` (
   `nroCliente` int(11) NOT NULL COMMENT 'número identificador y único de cada cliente',
   `email` varchar(50) NOT NULL COMMENT 'correo electrónico',
-  `contrasenia` varchar(20) NOT NULL COMMENT 'Contraseña personal de cada cliente que va a ingresar a la pagina',
+  `contrasenia` char(60) NOT NULL COMMENT 'Contraseña personal de cada cliente que va a ingresar a la pagina, guardada encriptada',
   `dir_calle` varchar(30) NOT NULL COMMENT 'calle en donde vive el cliente',
   `dir_num` int(11) NOT NULL COMMENT 'número de puerta de la dirección del cliente',
   `dir_barrio` varchar(20) NOT NULL COMMENT 'barrio de su dirección personal'

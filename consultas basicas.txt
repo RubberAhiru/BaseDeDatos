@@ -6,29 +6,69 @@ SELECT id_menu FROM `caja_menu`,envasa WHERE caja_menu.id = envasa.id_caja AND l
 
 2.Nombre, mail y/o teléfono de los clientes que NO hicieron pedidos el mes pasado:
 
+SELECT r.fecha, pd.id, c.email, t.num_cliente, p.nombre, e.razon_social
+FROM realiza r, pedido pd, cliente c, telefono t, persona p, empresa e
+WHERE r.fecha >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)
+AND r.fecha < CURDATE()
+AND r.id_pedido = pd.id AND r.nroCliente = c.nroCliente AND c.nroCliente = t.nroCliente;
 
 3.Histórico de estados de un determinado pedido:
 
+SELECT e.nombre, pa.fecha_ini, pa.fecha_fin
+FROM estado e, pedido p, pasa pa
+WHERE e.id = pa.id_estado AND pa.id_pedido = p.id AND p.id = 1;
 
 4.Días que faltan para que las cajas que contienen menú alcancen su fecha de vencimiento, ordenadas por menú:
 
+SELECT DATEDIFF(CURRENT_DATE, cm.exp) AS diferencia_en_dias, m.frecuencia
+FROM caja_menu cm, menu m, envasa e
+WHERE (cm.exp > CURRENT_DATE) AND (cm.id=e.id_caja)AND(e.id_menu=m.id)
+ORDER BY m.frecuencia;
 
-5.Comidas que integran un menú determinado:
+5.Viandas que integran un menú determinado:
 
+SELECT v.nombre, c.id, pr.id
+FROM menu m, vianda v, integra i, comun c, personalizado pr
+WHERE (m.id = i.id_menu)AND(v.id=i.id_vianda)
+AND (m.id=c.id) OR (m.id=pr.id);
 
 6.Listado de menús semanales, quincenales y mensuales:
+
+SELECT m.frecuencia, c.id, p.id
+FROM menu m, comun c, personalizado p
+ORDER by m.frecuencia;
 
 
 7.Mostrar el estado en el que se encuentran los pedidos del mes en curso al día de hoy, es decir, nombre del cliente, número de pedido y nombre del estado:
 
+SELECT pp.nombre, em.razon_social,p.id, e.nombre
+FROM estado e, pedido p, pasa pa,cliente c, persona pp, empresa em
+WHERE (e.id = pa.id_estado)AND(p.id=pa.id_pedido)
+AND p.fecha >= DATE_FORMAT(NOW(), '%Y-%m-01')
+AND p.fecha <= CURDATE();
+
 
 8.Cuantas cajas hay que producir para alcanzar el stock máximo de cada menú:
 
+SELECT m.id, m.frecuencia, COUNT(c.stock_max - c.stock_real) AS cajas_por_producir
+FROM menu m JOIN comun c
+ON m.id = c.id
+GROUP BY m.id, m.frecuencia;
 
 9.Nombre, mail y/o teléfono de los 3 clientes que realizaron más pedidos en el año:
 
+SELECT COUNT(p.id) AS total_pedidos, pr.nombre, c.email, t.num_cliente
+FROM cliente c, persona pr, empresa e, pedido p, realiza r, telefono t
+WHERE (c.nroCliente=r.nroCliente) AND (r.id_pedido=p.id) AND (c.nroCliente=t.nroCliente) AND (c.nroCliente=pr.nroCliente) AND (c.nroCliente=e.nroCliente)
+AND (YEAR(r.fecha) = 2023)
+GROUP BY pr.nombre, c.email, t.num_cliente
+ORDER BY total_pedidos DESC
+LIMIT 3;
+/*3 clientes que realizaron más pedidos en el año*/
 
 10.Nombre y dirección de los clientes que hicieron pedidos para entregar hoy ordenados o agrupados por Zona:
 
-
-
+SELECT c.dir_barrio, c.dir_calle, c.dir_num, p.nombre, e.razon_social, pg.fecha, pg.hora, pg.id_pedido
+FROM cliente c, persona p, empresa e, paga pg, pedido pd
+WHERE (c.nroCliente=p.nroCliente) AND (c.nroCliente=e.nroCliente) AND (c.nroCliente=pg.nroCliente) AND pg.fecha = CURRENT_DATE
+ORDER BY c.dir_barrio;
