@@ -64,7 +64,6 @@ AND (YEAR(r.fecha) = 2023)
 GROUP BY pr.nombre, c.email, t.num_cliente
 ORDER BY total_pedidos DESC
 LIMIT 3;
-/*3 clientes que realizaron más pedidos en el año*/
 
 10.Nombre y dirección de los clientes que hicieron pedidos para entregar hoy ordenados o agrupados por Zona:
 

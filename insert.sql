@@ -548,10 +548,11 @@ INSERT INTO `estado`(`id`, `nombre`) VALUES ("6", "Devuelto");
 INSERT INTO `realiza`(`nroCliente`, `id_pedido`, `fecha`, `hora`) VALUES ("","","","");
 
 /*sucursal*/
-INSERT INTO `sucursal`(`id`, `nombre`, `cant_cocinas`, `datos`) VALUES ("1","Sisviansa","4","Rio Negro 123, 29002122");
-INSERT INTO `sucursal`(`id`, `nombre`, `cant_cocinas`, `datos`) VALUES ("2","Sisviandas","3","Paso Monlino 2730, 29002223");
-INSERT INTO `sucursal`(`id`, `nombre`, `cant_cocinas`, `datos`) VALUES ("3","Sistemas de Viandas","10","Punta carretas 824, 29002324");
-INSERT INTO `sucursal`(`id`, `nombre`, `cant_cocinas`, `datos`) VALUES ("4","Viandas Saludables","2","Av Uruguay 1030, 29002425");
+INSERT INTO `sucursal`(`id`, `nombre`, `cant_cocinas`, `datos`) VALUES ("1","Sisviansa","4","Rio Negro 123, 29002122","Montevideo");
+INSERT INTO `sucursal`(`id`, `nombre`, `cant_cocinas`, `datos`) VALUES ("2","Sisviandas","3","Playa Pascual 2730, 29002223","San Jose");
+INSERT INTO `sucursal`(`id`, `nombre`, `cant_cocinas`, `datos`) VALUES ("3","Sistemas de Viandas","10","Punta carretas 824, 29002324","Montevideo");
+INSERT INTO `sucursal`(`id`, `nombre`, `cant_cocinas`, `datos`) VALUES ("4","Viandas Saludables","2","Av Uruguay 1030, 29002425","Montevideo");
+INSERT INTO `sucursal`( `nombre`, `cant_cocinas`, `datos`, `departamento`) VALUES ("Sisvs","2","La Paz camino alado 298 096528325","Canelones");
 
 /*tarjeta*/
 INSERT INTO `tarjeta`(`id`, `titular`, `banco`, `num`, `codigo`, `exp`) VALUES ("1","4","Santander","45400055566","222","2024-01-31");

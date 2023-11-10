@@ -1,0 +1,58 @@
+/*Consultas No Obligatorias*/
+11.¿Cuantas viandas o cajas hay de cada menú en stock?
+
+
+12.¿Cuantas viandas y/o cajas hay en cada estado en cada sucursal?
+
+
+13.¿Cuál fue el menú más pedido en el año?
+
+
+14.Listar las comidas que pertenecen a la dieta vegetariana
+
+SELECT v.id, v.nombre
+FROM vianda v, dieta d, pertenece p
+WHERE (v.id=p.id_vianda) AND (p.id_dieta=d.id)
+AND (d.nombre="vegetariana");
+
+15.Listado de clientes no autorizados
+
+No posible reasponder a su consulta mediante sql.
+
+16.Listado de menús y tiempo de elaboración de los menús que se encuentran en producción
+
+
+17.Cantidad de zonas por sucursal y/o departamento
+
+SELECT s.departamento, COUNT(*) AS cantidad
+FROM sucursal s
+GROUP BY s.departamento;
+
+18.Listado de clientes empresariales que hicieron pedidos este mes
+
+
+19.Clientes con tarjeta VISA
+SELECT c.nroCliente
+FROM tarjeta t, pedido p, realiza r, cliente c
+WHERE (c.nroCliente=r.nroCliente) AND (r.id_pedido=p.id) AND (p.id_tarjeta=t.id) AND (t.red="visa");
+
+20.Promedio de pedidos entregados en el año
+
+
+21.Cantidad de menús desechados
+
+
+22.Menús que alcanzaron el stock mínimo
+
+
+23.Cantidad de menús personalizados de los últimos 2 meses
+
+
+24.Pedidos solicitados el día de ayer que aún no se han procesado
+
+
+25.Listado de sucursales por departamento
+
+SELECT *
+FROM sucursal s
+ORDER BY s.departamento;
