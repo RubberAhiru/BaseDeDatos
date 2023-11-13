@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-10-2023 a las 02:23:10
+-- Tiempo de generación: 14-11-2023 a las 00:50:17
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.3.23
 
@@ -30,9 +30,24 @@ SET time_zone = "+00:00";
 CREATE TABLE `caja_menu` (
   `id` int(11) NOT NULL COMMENT 'identificador de la caja de menú',
   `lote` date NOT NULL COMMENT 'fecha de elaboración',
-  `exp` date NOT NULL COMMENT 'fecha de expiración o vencimiento',
-  `id_pedido` int(11) NOT NULL COMMENT 'identificador el pedido'
+  `exp` date NOT NULL COMMENT 'fecha de expiración o vencimiento'
 );
+
+--
+-- Volcado de datos para la tabla `caja_menu`
+--
+
+INSERT INTO `caja_menu` (`id`, `lote`, `exp`) VALUES
+(1, '2023-11-13', '2024-02-13'),
+(2, '2023-11-13', '2024-02-13'),
+(3, '2023-11-13', '2024-02-13'),
+(4, '2023-11-13', '2024-02-13'),
+(5, '2023-11-13', '2024-02-13'),
+(6, '2023-11-13', '2024-02-13'),
+(7, '2023-11-13', '2024-02-13'),
+(8, '2023-12-01', '2024-03-01'),
+(9, '2023-12-01', '2024-03-01'),
+(10, '2023-12-01', '2024-03-01');
 
 -- --------------------------------------------------------
 
@@ -43,7 +58,7 @@ CREATE TABLE `caja_menu` (
 CREATE TABLE `cliente` (
   `nroCliente` int(11) NOT NULL COMMENT 'número identificador y único de cada cliente',
   `email` varchar(50) NOT NULL COMMENT 'correo electrónico',
-  `contrasenia` char(60) NOT NULL COMMENT 'Contraseña personal de cada cliente que va a ingresar a la pagina, guardada encriptada',
+  `contrasenia` char(60) NOT NULL COMMENT 'Contraseña personal de cada cliente que va a ingresar a la pagina',
   `dir_calle` varchar(30) NOT NULL COMMENT 'calle en donde vive el cliente',
   `dir_num` int(11) NOT NULL COMMENT 'número de puerta de la dirección del cliente',
   `dir_barrio` varchar(20) NOT NULL COMMENT 'barrio de su dirección personal'
@@ -89,6 +104,30 @@ CREATE TABLE `comun` (
   `stock_real` int(11) NOT NULL COMMENT 'hace referencia al stock actual en disponible'
 );
 
+--
+-- Volcado de datos para la tabla `comun`
+--
+
+INSERT INTO `comun` (`id`, `precT`, `stock_min`, `stock_max`, `stock_real`) VALUES
+(1, 600, 4, 10, 8),
+(2, 600, 4, 10, 7),
+(3, 600, 4, 10, 6),
+(4, 600, 4, 10, 5),
+(5, 600, 4, 10, 4),
+(10, 1200, 4, 10, 10),
+(15, 1800, 3, 6, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `contiene`
+--
+
+CREATE TABLE `contiene` (
+  `id_caja` int(11) NOT NULL COMMENT 'identificacion de la caja de menú asignada',
+  `id_pedido` int(11) NOT NULL COMMENT 'identificador del pedido asociado'
+);
+
 -- --------------------------------------------------------
 
 --
@@ -109,7 +148,7 @@ INSERT INTO `dieta` (`id`, `nombre`, `descrip`) VALUES
 (1, 'clasica', 'Incluye alimentos vegetales y animales. Seguir este tipo de alimentación de manera equilibrada aporta todos los nutrientes necesarios y contribuye a la salud.'),
 (2, 'vegetariana', 'Cuando las personas piensan en una dieta vegetariana, normalmente creen que no incluye carne de vaca, pollo o pescado. '),
 (3, 'Mediterranea', 'De origen vegetal, consta de cereales integrales, verduras, legumbres, frutas, frutos secos, semillas, hierbas y especias.'),
-(4, 'Sin Sal', 'Comidas sin sal para hipertensos, el tratamiento dietético.'),
+(4, 'Baja en Calorias', 'Para quienes desean hacer dieta, ofrecemos una especifica para bajar de peso'),
 (5, 'Veganas', 'Que no incluyen ningún alimento de origen animal'),
 (6, 'Celiaca', 'comidas libres de gluten y gliadina'),
 (7, 'Lactovegetariana', 'incluyen leche y sus derivados (sin huevo o miel)'),
@@ -158,6 +197,13 @@ CREATE TABLE `envasa` (
   `id_menu` int(11) NOT NULL COMMENT 'identificador del menú'
 );
 
+--
+-- Volcado de datos para la tabla `envasa`
+--
+
+INSERT INTO `envasa` (`id_caja`, `id_vianda`, `id_menu`) VALUES
+(1, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -205,6 +251,87 @@ CREATE TABLE `integra` (
   `id_vianda` int(11) NOT NULL COMMENT 'identificador del menú'
 );
 
+--
+-- Volcado de datos para la tabla `integra`
+--
+
+INSERT INTO `integra` (`id_menu`, `id_vianda`) VALUES
+(1, 44),
+(1, 45),
+(1, 46),
+(1, 47),
+(1, 48),
+(2, 49),
+(2, 50),
+(2, 51),
+(2, 52),
+(2, 53),
+(3, 54),
+(3, 55),
+(3, 56),
+(3, 57),
+(3, 58),
+(4, 39),
+(4, 40),
+(4, 41),
+(4, 42),
+(4, 43),
+(5, 34),
+(5, 35),
+(5, 36),
+(5, 37),
+(5, 38),
+(6, 29),
+(6, 30),
+(6, 31),
+(6, 32),
+(6, 33),
+(7, 74),
+(7, 75),
+(7, 76),
+(7, 77),
+(7, 78),
+(8, 79),
+(8, 80),
+(8, 81),
+(8, 82),
+(8, 83),
+(9, 84),
+(9, 85),
+(9, 86),
+(9, 87),
+(9, 88),
+(10, 59),
+(10, 60),
+(10, 61),
+(10, 62),
+(10, 63),
+(10, 64),
+(10, 65),
+(10, 66),
+(10, 67),
+(10, 68),
+(15, 89),
+(15, 90),
+(15, 91),
+(15, 92),
+(15, 93),
+(15, 94),
+(15, 95),
+(15, 96),
+(15, 97),
+(15, 98),
+(15, 99),
+(15, 100),
+(15, 101),
+(15, 102),
+(15, 103),
+(21, 69),
+(21, 70),
+(21, 71),
+(21, 72),
+(21, 73);
+
 -- --------------------------------------------------------
 
 --
@@ -222,8 +349,26 @@ CREATE TABLE `menu` (
 
 INSERT INTO `menu` (`id`, `frecuencia`) VALUES
 (1, 'semanal'),
-(2, 'quincenal'),
-(3, 'mensual');
+(2, 'semanal'),
+(3, 'semanal'),
+(4, 'semanal'),
+(5, 'semanal'),
+(6, 'semanal'),
+(7, 'semanal'),
+(8, 'semanal'),
+(9, 'semanal'),
+(10, 'quincenal'),
+(11, 'quincenal'),
+(12, 'quincenal'),
+(13, 'quincenal'),
+(14, 'quincenal'),
+(15, 'mensual'),
+(16, 'mensual'),
+(17, 'mensual'),
+(18, 'mensual'),
+(19, 'mensual'),
+(20, 'mensual'),
+(21, 'semanal');
 
 -- --------------------------------------------------------
 
@@ -442,6 +587,9 @@ INSERT INTO `pertenece` (`id_dieta`, `id_vianda`) VALUES
 (2, 98),
 (2, 99),
 (2, 100),
+(2, 101),
+(2, 102),
+(2, 103),
 (3, 88),
 (4, 59),
 (4, 60),
@@ -473,6 +621,9 @@ INSERT INTO `pertenece` (`id_dieta`, `id_vianda`) VALUES
 (5, 98),
 (5, 99),
 (5, 100),
+(5, 101),
+(5, 102),
+(5, 103),
 (6, 36),
 (6, 37),
 (6, 74),
@@ -648,18 +799,20 @@ CREATE TABLE `sucursal` (
   `id` int(11) NOT NULL COMMENT 'identificador de la sucursal',
   `nombre` varchar(20) NOT NULL COMMENT 'nombre del establecimiento o sucursal',
   `cant_cocinas` int(11) NOT NULL COMMENT 'cantidad de cocinas que posee determinada sucursal',
-  `datos` varchar(100) NOT NULL COMMENT 'datos extras, estos pueden incluir la ubicación y el teléfono por posibles problemas.'
+  `datos` varchar(100) NOT NULL COMMENT 'datos extras, estos pueden incluir la ubicación y el teléfono por posibles problemas.',
+  `departamento` varchar(30) NOT NULL
 );
 
 --
 -- Volcado de datos para la tabla `sucursal`
 --
 
-INSERT INTO `sucursal` (`id`, `nombre`, `cant_cocinas`, `datos`) VALUES
-(1, 'Sisviansa', 4, 'Rio Negro 123, 29002122'),
-(2, 'Sisviandas', 3, 'Paso Monlino 2730, 29002223'),
-(3, 'Sistemas de Viandas', 10, 'Punta carretas 824, 29002324'),
-(4, 'Viandas Saludables', 2, 'Av Uruguay 1030, 29002425');
+INSERT INTO `sucursal` (`id`, `nombre`, `cant_cocinas`, `datos`, `departamento`) VALUES
+(1, 'Sisviansa', 4, 'Rio Negro 123, 29002122', 'Montevideo'),
+(2, 'Sisviandas', 3, 'Playa Pascual, 29002223', 'San Jose'),
+(3, 'Sistemas de Viandas', 10, 'Punta carretas 824, 29002324', 'Montevideo'),
+(4, 'Viandas Saludables', 2, 'Av Uruguay 1030, 29002425', 'Montevideo'),
+(5, 'Sisvs', 2, 'La Paz camino alado 298 096528325', 'Canelones');
 
 -- --------------------------------------------------------
 
@@ -673,25 +826,26 @@ CREATE TABLE `tarjeta` (
   `banco` varchar(20) NOT NULL COMMENT 'ej: oca, visa, master, etc.',
   `num` int(11) NOT NULL COMMENT 'número en la tarjeta',
   `codigo` int(4) NOT NULL COMMENT 'código de verificación de 3 dígitos',
-  `exp` date NOT NULL COMMENT 'fecha de expiración/vencimiento de la tarjeta'
+  `exp` date NOT NULL COMMENT 'fecha de expiración/vencimiento de la tarjeta',
+  `red` varchar(20) DEFAULT NULL COMMENT 'red o network son las financieras aderiadas a un banco: ejemplo visa, marter card, maestro, american expres, ect'
 );
 
 --
 -- Volcado de datos para la tabla `tarjeta`
 --
 
-INSERT INTO `tarjeta` (`id`, `titular`, `banco`, `num`, `codigo`, `exp`) VALUES
-(1, '4', 'Santander', 2147483647, 222, '2024-01-31'),
-(2, '1', 'Itaud', 7554652, 111, '2025-08-08'),
-(3, '1', 'OCA', 2147483647, 888, '2024-10-08'),
-(4, '2', 'Scotiabank', 2147483647, 999, '2024-11-01'),
-(5, '5', 'Cabal', 2147483647, 80, '2025-06-30'),
-(6, '5', 'Pass Card', 786876876, 1, '2025-01-01'),
-(7, '5', 'Universo Binario', 2147483647, 88, '2024-05-01'),
-(8, '3', 'Brou', 2147483647, 121, '2024-10-01'),
-(9, '3', 'Prex', 1706165652, 122, '2025-11-01'),
-(10, '6', 'Pronto', 2147483647, 808, '2025-11-01'),
-(11, '6', 'Si Si', 2147483647, 838, '2024-08-11');
+INSERT INTO `tarjeta` (`id`, `titular`, `banco`, `num`, `codigo`, `exp`, `red`) VALUES
+(1, '4', 'Santander', 444483647, 222, '2024-01-31', 'visa'),
+(2, '1', 'Itaud', 47554652, 111, '2025-08-08', 'visa'),
+(3, '1', 'OCA', 514553647, 888, '2024-10-08', 'mastercard'),
+(4, '2', 'Scotiabank', 2147483647, 999, '2024-11-01', 'american expres'),
+(5, '5', 'Cabal', 2147483647, 80, '2025-06-30', 'valor'),
+(6, '5', 'Pass Card', 786876876, 1, '2025-01-01', NULL),
+(7, '5', 'Universo Binario', 2147483647, 88, '2024-05-01', 'discover'),
+(8, '3', 'Brou', 414748337, 121, '2024-10-01', 'visa'),
+(9, '3', 'Prex', 578865652, 122, '2025-11-01', 'mastercard'),
+(10, '6', 'Pronto', 2147483647, 808, '2025-11-01', 'visa'),
+(11, '6', 'Si Si', 414748008, 838, '2024-08-11', 'visa');
 
 -- --------------------------------------------------------
 
@@ -858,7 +1012,10 @@ INSERT INTO `vianda` (`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`)
 (97, 'tortilla de papas vegana', 25, 200, '97.jpg', 'papas,huevo, aceite, oregano'),
 (98, 'guiso delentejas con verduras ', 35, 180, '98.jpg', 'guiso de lentejas'),
 (99, 'albondigas veganas de lentejas', 35, 210, '99.jpg', 'albondigas veganas de lentejas'),
-(100, 'ensalada mediterranea', 30, 170, '100.jpg', 'ensalada mediterranea');
+(100, 'ensalada mediterranea', 30, 170, '100.jpg', 'ensalada mediterranea'),
+(101, 'cazuela', 30, 170, '101.jpg', 'cazuela de vegetales con arroz'),
+(102, 'tortilla v', 30, 170, '102.jpg', 'totilla vegana de calabacin'),
+(103, 'hamburguesa v', 30, 170, '103.jpg', 'hamburguesa de garbanzos vegana');
 
 --
 -- Índices para tablas volcadas
@@ -868,8 +1025,7 @@ INSERT INTO `vianda` (`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`)
 -- Indices de la tabla `caja_menu`
 --
 ALTER TABLE `caja_menu`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK12` (`id_pedido`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `cliente`
@@ -882,6 +1038,13 @@ ALTER TABLE `cliente`
 --
 ALTER TABLE `comun`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `contiene`
+--
+ALTER TABLE `contiene`
+  ADD PRIMARY KEY (`id_caja`,`id_pedido`),
+  ADD KEY `FK12` (`id_pedido`);
 
 --
 -- Indices de la tabla `dieta`
@@ -1015,7 +1178,7 @@ ALTER TABLE `vianda`
 -- AUTO_INCREMENT de la tabla `caja_menu`
 --
 ALTER TABLE `caja_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'identificador de la caja de menú';
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'identificador de la caja de menú', AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente`
@@ -1027,7 +1190,7 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT de la tabla `dieta`
 --
 ALTER TABLE `dieta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'identificador para cada dieta', AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'identificador para cada dieta', AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de la tabla `estado`
@@ -1039,7 +1202,7 @@ ALTER TABLE `estado`
 -- AUTO_INCREMENT de la tabla `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'identificador del menú', AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'identificador del menú', AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `pedido`
@@ -1057,7 +1220,7 @@ ALTER TABLE `proceso`
 -- AUTO_INCREMENT de la tabla `sucursal`
 --
 ALTER TABLE `sucursal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'identificador de la sucursal', AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'identificador de la sucursal', AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tarjeta`
@@ -1069,23 +1232,24 @@ ALTER TABLE `tarjeta`
 -- AUTO_INCREMENT de la tabla `vianda`
 --
 ALTER TABLE `vianda`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'identificador de la vianda', AUTO_INCREMENT=101;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'identificador de la vianda', AUTO_INCREMENT=104;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `caja_menu`
---
-ALTER TABLE `caja_menu`
-  ADD CONSTRAINT `FK12` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id`);
-
---
 -- Filtros para la tabla `comun`
 --
 ALTER TABLE `comun`
   ADD CONSTRAINT `FK5` FOREIGN KEY (`id`) REFERENCES `menu` (`id`);
+
+--
+-- Filtros para la tabla `contiene`
+--
+ALTER TABLE `contiene`
+  ADD CONSTRAINT `FK12` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id`),
+  ADD CONSTRAINT `FK99` FOREIGN KEY (`id_caja`) REFERENCES `caja_menu` (`id`);
 
 --
 -- Filtros para la tabla `empresa`

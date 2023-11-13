@@ -1,58 +1,157 @@
 /*Consultas No Obligatorias*/
-11.¿Cuantas viandas o cajas hay de cada menú en stock?
+11.¿Cuantas viandas o cajas hay de cada menú en stock?:
+//esta consulta solo devolverá resultados para aquellos menús comunes que tengan asociadas cajas a través de la tabla envasa. Si hay menús comunes sin cajas asociadas, no aparecerán en el resultado.
+
+SELECT m.id AS id_menu, COUNT(cm.id) AS cajas_en_stock
+FROM menu m
+JOIN comun c ON m.id = c.id
+JOIN envasa e ON e.id_menu = m.id
+JOIN caja_menu cm ON e.id_caja = cm.id
+GROUP BY m.id
+ORDER BY  m.id
+
+12.¿Cuantas viandas y/o cajas hay en cada estado en cada sucursal?:
+
+SELECT m.id AS id_menu, m.frecuencia,
+    SUM(IFNULL(c.stock_real, 0)) AS total_stock_real
+FROM menu m
+LEFT JOIN comun c ON m.id = c.id
+GROUP BY m.id
+ORDER BY m.id
+
+//creo que al mer le falta algo esto no encaja, verificar//
+SELECT m.id AS id_menu, m.frecuencia,
+    SUM(IFNULL(em.cantidad_disponible, 0)) AS total_viandas,
+    SUM(IFNULL(cm.cantidad, 0)) AS total_cajas
+FROM menu m
+LEFT JOIN (
+	SELECT
+        e.id_menu,
+        SUM(e.cantidad_disponible) AS cantidad_disponible
+	FROM envasa e
+	GROUP BY
+        e.id_menu) em ON m.id = em.id_menu
+LEFT JOIN (
+	SELECT
+        cm.id_menu,
+        COUNT(*) AS cantidad
+	FROM
+        caja_menu cm
+	GROUP BY
+        cm.id_menu) cm ON m.id = cm.id_menu
+GROUP BY m.id
+ORDER BY m.id;
 
 
-12.¿Cuantas viandas y/o cajas hay en cada estado en cada sucursal?
+13.¿Cuál fue el menú más pedido en el año?:
 
+// SERA MENU COMUN dificil???
 
-13.¿Cuál fue el menú más pedido en el año?
+SELECT m.id AS id_menu_comun, m.frecuencia, COUNT(*) AS total_pedidos
+FROM pedido p
+JOIN
+    caja_menu cm ON p.id = cm.id_pedido
+JOIN
+    menu m ON cm.id = m.id
+JOIN
+    comun c ON m.id = c.id
+WHERE
+    YEAR(p.fecha) = YEAR(CURDATE())
+GROUP BY m.id
+ORDER BY total_pedidos DESC
+LIMIT 1;
 
-
-14.Listar las comidas que pertenecen a la dieta vegetariana
+14.Listar las comidas que pertenecen a la dieta vegetariana:
 
 SELECT v.id, v.nombre
 FROM vianda v, dieta d, pertenece p
 WHERE (v.id=p.id_vianda) AND (p.id_dieta=d.id)
 AND (d.nombre="vegetariana");
 
-15.Listado de clientes no autorizados
+15.Listado de clientes no autorizados:
 
 No posible reasponder a su consulta mediante sql.
 
-16.Listado de menús y tiempo de elaboración de los menús que se encuentran en producción
+16.Listado de menús y tiempo de elaboración de los menús que se encuentran en producción:
+
+SELECT m.id AS id_menu, v.nombre AS nombre_vianda, v.tiempo AS tiempo_elaboracion_vianda
+FROM menu m
+JOIN
+    integra i ON m.id = i.id_menu
+JOIN
+    vianda v ON i.id_vianda = v.id
+LEFT JOIN comun c ON m.id = c.id
+WHERE
+    IFNULL(c.stock_real, 0) < IFNULL(c.stock_max, 0)
+GROUP BY m.id, v.id
+ORDER BY m.id, v.id;
 
 
-17.Cantidad de zonas por sucursal y/o departamento
+17.Cantidad de zonas por sucursal y/o departamento:
 
 SELECT s.departamento, COUNT(*) AS cantidad
 FROM sucursal s
 GROUP BY s.departamento;
 
-18.Listado de clientes empresariales que hicieron pedidos este mes
+18.Listado de clientes empresariales que hicieron pedidos este mes:
 
+//probar con datos insertados luego!
 
-19.Clientes con tarjeta VISA
+SELECT e.*
+FROM cliente c, empresa e, realiza r, pedido p
+WHERE (e.nroCliente=c.nroCliente) AND (c.nroCliente=r.nroCliente) AND (r.id_pedido=p.id)
+AND MONTH(r.fecha) = MONTH(CURRENT_DATE);
+
+//o
+
+SELECT e.*
+FROM cliente c
+JOIN empresa e ON e.nroCliente = c.nroCliente
+JOIN realiza r ON c.nroCliente = r.nroCliente
+JOIN pedido p ON r.id_pedido = p.id
+WHERE MONTH(r.fecha) = MONTH(CURRENT_DATE);
+
+19.Clientes con tarjeta VISA:
 SELECT c.nroCliente
 FROM tarjeta t, pedido p, realiza r, cliente c
 WHERE (c.nroCliente=r.nroCliente) AND (r.id_pedido=p.id) AND (p.id_tarjeta=t.id) AND (t.red="visa");
 
-20.Promedio de pedidos entregados en el año
+20.Promedio de pedidos entregados en el año:
 
 
-21.Cantidad de menús desechados
+21.Cantidad de menús desechados:
 
 
-22.Menús que alcanzaron el stock mínimo
+22.Menús que alcanzaron el stock mínimo: //corregir
+SELECT m.id AS id_menu, m.frecuencia, c.stock_min, c.stock_max,
+    IFNULL(SUM(cm.id IS NOT NULL), 0) AS cajas_en_stock
+FROM
+    menu m
+JOIN
+    comun c ON m.id = c.id
+LEFT JOIN
+    envasa e ON e.id_menu = m.id
+LEFT JOIN
+    caja_menu cm ON e.id_caja = cm.id
+GROUP BY
+    m.id
+HAVING
+    IFNULL(SUM(cm.id IS NOT NULL), 0) >= c.stock_min
+       AND IFNULL(SUM(cm.id IS NOT NULL), 0) <= c.stock_max
+ORDER BY
+    m.id;
 
 
-23.Cantidad de menús personalizados de los últimos 2 meses
+23.Cantidad de menús personalizados de los últimos 2 meses:
 
 
-24.Pedidos solicitados el día de ayer que aún no se han procesado
+24.Pedidos solicitados el día de ayer que aún no se han procesado:
 
 
-25.Listado de sucursales por departamento
+25.Listado de sucursales por departamento:
 
 SELECT *
 FROM sucursal s
 ORDER BY s.departamento;
+
+//parece que dependiendo del tipo de sql que estes usando podrian no funcionar las consultas (ya que deberia variar la sintaxis) investigar con la profe.

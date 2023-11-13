@@ -158,16 +158,11 @@ INSERT INTO `telefono`(`nroCliente`, `num_cliente`) VALUES ("18","093346226");
 INSERT INTO `telefono`(`nroCliente`, `num_cliente`) VALUES ("19","094174326");
 INSERT INTO `telefono`(`nroCliente`, `num_cliente`) VALUES ("20","093426739");
 
-/*menu*/
-INSERT INTO `menu`(`id`, `frecuencia`) VALUES ("1","semanal");
-INSERT INTO `menu`(`id`, `frecuencia`) VALUES ("2","quincenal");
-INSERT INTO `menu`(`id`, `frecuencia`) VALUES ("3","mensual");
-
 /*dietas*/
 INSERT INTO `dieta`(`nombre`, `descrip`) VALUES ("clasica","Incluye alimentos vegetales y animales. Seguir este tipo de alimentación de manera equilibrada aporta todos los nutrientes necesarios y contribuye a la salud.");
 INSERT INTO `dieta`(`id`, `nombre`, `descrip`) VALUES ("2","vegetariana","Cuando las personas piensan en una dieta vegetariana, normalmente creen que no incluye carne de vaca, pollo o pescado. ");
 INSERT INTO `dieta`(`id`, `nombre`, `descrip`) VALUES ("3","Mediterranea","De origen vegetal, consta de cereales integrales, verduras, legumbres, frutas, frutos secos, semillas, hierbas y especias.");
-INSERT INTO `dieta`(`id`, `nombre`, `descrip`) VALUES ("4","Sin Sal","Comidas sin sal para hipertensos, el tratamiento dietético.");
+INSERT INTO `dieta`(`id`, `nombre`, `descrip`) VALUES ("4", "Baja en calorias","Para quienes desean hacer dieta, ofrecemos una especifica para bajar de peso");
 INSERT INTO `dieta`(`id`, `nombre`, `descrip`) VALUES ("5","Veganas","Que no incluyen ningún alimento de origen animal");
 INSERT INTO `dieta`(`id`, `nombre`, `descrip`) VALUES ("6","Celiaca","comidas libres de gluten y gliadina");
 INSERT INTO `dieta`(`id`, `nombre`, `descrip`) VALUES ("7","Lactovegetariana","incluyen leche y sus derivados (sin huevo o miel)");
@@ -177,7 +172,6 @@ INSERT INTO `dieta`(`id`, `nombre`, `descrip`) VALUES ("10","Crudivegana","Alime
 INSERT INTO `dieta`(`id`, `nombre`, `descrip`) VALUES ("11","pescetariana","Incluyendo en pequeñas porciones carne de pescado y camarones.");
 INSERT INTO `dieta`(`id`, `nombre`, `descrip`) VALUES ("12","apivegetariana","No consumen lácteos ni huevos pero sí miel");
 INSERT INTO `dieta`(`id`, `nombre`, `descrip`) VALUES ("13","flexivegetariana","Tambien conocido como semivegano es una dieta que puede incluir un poco de carne ocacionalmente.");
-
 /*viandas*/
 INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("1","pasta italiana","30","150","1.png","espaguetis con salsa tomate y morron rojo");
 INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) VALUES ("2","fideos con tuco","35","250","2.png","fideos rulos con tuco de pollo grill");
@@ -418,8 +412,12 @@ VALUES ("99","albondigas veganas de lentejas","35","210","99.jpg","albondigas ve
 
 INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) 
 VALUES ("100","ensalada mediterranea","30","170","100.jpg","ensalada mediterranea");
-
-
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) 
+VALUES ("101","cazuela","30","170","101.jpg","cazuela de vegetales con arroz");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) 
+VALUES ("102","tortilla v","30","170","102.jpg","totilla vegana de calabacin");
+INSERT INTO `vianda`(`id`, `nombre`, `tiempo`, `precio`, `imagen`, `contenido`) 
+VALUES ("103","hamburguesa v","30","170","103.jpg","hamburguesa de garbanzos vegana");
 
 /*pertenece*/
 INSERT INTO `pertenece`(`id_dieta`, `id_vianda`) VALUES ("1","1");
@@ -429,7 +427,6 @@ INSERT INTO `pertenece`(`id_dieta`, `id_vianda`) VALUES ("8","1");
 INSERT INTO `pertenece`(`id_dieta`, `id_vianda`) VALUES ("9","1");
 INSERT INTO `pertenece`(`id_dieta`, `id_vianda`) VALUES ("11","1");
 INSERT INTO `pertenece`(`id_dieta`, `id_vianda`) VALUES ("13","1");
-
 /*DIETA CLASICA*/
 INSERT INTO `pertenece`(`id_dieta`, `id_vianda`) VALUES ("1","29"), ("11","29"), ("13","29");
 INSERT INTO `pertenece`(`id_dieta`, `id_vianda`) VALUES ("1","30"), ("11","30"), ("13","30");
@@ -462,7 +459,7 @@ INSERT INTO `pertenece`(`id_dieta`, `id_vianda`) VALUES ("1","55"), ("2","55"), 
 INSERT INTO `pertenece`(`id_dieta`, `id_vianda`) VALUES ("1","56"), ("2","56"), ("8","56"), ("9", "56"), ("13","56");
 INSERT INTO `pertenece`(`id_dieta`, `id_vianda`) VALUES ("1","57"), ("2","57"), ("8","57"), ("9", "57"), ("13","57");
 INSERT INTO `pertenece`(`id_dieta`, `id_vianda`) VALUES ("1","58"), ("2","58"), ("8","58"), ("9", "58"), ("13","58");
-/*DIETA DE BAJA CALORIAS, SIN SAL*/
+/*DIETA DE BAJA CALORIAS*/
 INSERT INTO `pertenece`(`id_dieta`, `id_vianda`) VALUES ("1","59"), ("4","59");
 INSERT INTO `pertenece`(`id_dieta`, `id_vianda`) VALUES ("1","60"), ("4","60");
 INSERT INTO `pertenece`(`id_dieta`, `id_vianda`) VALUES ("1","61"), ("4","61");
@@ -507,22 +504,111 @@ INSERT INTO `pertenece`(`id_dieta`, `id_vianda`) VALUES ("1","97"), ("2","97"),(
 INSERT INTO `pertenece`(`id_dieta`, `id_vianda`) VALUES ("1","98"), ("2","98"),("5","98"), ("13","98");
 INSERT INTO `pertenece`(`id_dieta`, `id_vianda`) VALUES ("1","99"), ("2","99"),("5","99"), ("13","99");
 INSERT INTO `pertenece`(`id_dieta`, `id_vianda`) VALUES ("1","100"), ("2","100"),("5","100"), ("13","100");
-
-
+INSERT INTO `pertenece`(`id_dieta`, `id_vianda`) VALUES ("2","101"), ("2","102"),("2","103"), ("5","101"), ("5","102"),("5","103");
+/*menu*/
+INSERT INTO `menu`(`id`, `frecuencia`) VALUES ("1","semanal"); INSERT INTO `menu`(`id`, `frecuencia`) VALUES ("2","semanal");INSERT INTO `menu`(`id`, `frecuencia`) VALUES ("3","semanal");INSERT INTO `menu`(`id`, `frecuencia`) VALUES ("4","semanal");INSERT INTO `menu`(`id`, `frecuencia`) VALUES ("5","semanal");INSERT INTO `menu`(`id`, `frecuencia`) VALUES ("6","semanal");INSERT INTO `menu`(`id`, `frecuencia`) VALUES ("7","semanal");INSERT INTO `menu`(`id`, `frecuencia`) VALUES ("8","semanal");INSERT INTO `menu`(`id`, `frecuencia`) VALUES ("9","semanal");
+INSERT INTO `menu`(`id`, `frecuencia`) VALUES ("10","quincenal"); INSERT INTO `menu`(`id`, `frecuencia`) VALUES ("11","quincenal");INSERT INTO `menu`(`id`, `frecuencia`) VALUES ("12","quincenal");INSERT INTO `menu`(`id`, `frecuencia`) VALUES ("13","quincenal");INSERT INTO `menu`(`id`, `frecuencia`) VALUES ("14","quincenal");
+INSERT INTO `menu`(`id`, `frecuencia`) VALUES ("15","mensual"); INSERT INTO `menu`(`id`, `frecuencia`) VALUES ("16","mensual");INSERT INTO `menu`(`id`, `frecuencia`) VALUES ("17","mensual");INSERT INTO `menu`(`id`, `frecuencia`) VALUES ("18","mensual");INSERT INTO `menu`(`id`, `frecuencia`) VALUES ("19","mensual");INSERT INTO `menu`(`id`, `frecuencia`) VALUES ("20","mensual");
+INSERT INTO `menu`(`id`, `frecuencia`) VALUES (21,"semanal")
 /*caja_menu*/
-INSERT INTO `caja_menu`(`id`, `lote`, `exp`, `id_pedido`) VALUES ("","","","");
+INSERT INTO `caja_menu`(`id`, `lote`, `exp`, `id_pedido`) VALUES ("1","2023-11-13","2024-02-13");
+
+INSERT INTO `caja_menu`(`lote`, `exp`) VALUES (CURDATE(), DATE_ADD(CURDATE(), INTERVAL 3 MONTH));/*que lo autogenere*/
+INSERT INTO `caja_menu`(`lote`, `exp`) VALUES ("2023/12/01", DATE_ADD("2023/12/01", INTERVAL 3 MONTH))/*copiarlas varias veces*/
 
 /*comun*/
-INSERT INTO `comun`(`id`, `precT`, `stock_min`, `stock_max`, `stock_real`) VALUES ("","","","","");
+INSERT INTO `comun`(`id`, `precT`, `stock_min`, `stock_max`, `stock_real`) VALUES ("1","600","4","10","8");
+INSERT INTO `comun`(`id`, `precT`, `stock_min`, `stock_max`, `stock_real`) VALUES ("2","600","4","10","7");
+INSERT INTO `comun`(`id`, `precT`, `stock_min`, `stock_max`, `stock_real`) VALUES ("3","600","4","10","6");
+INSERT INTO `comun`(`id`, `precT`, `stock_min`, `stock_max`, `stock_real`) VALUES ("4","600","4","10","5");
+INSERT INTO `comun`(`id`, `precT`, `stock_min`, `stock_max`, `stock_real`) VALUES ("5","600","4","10","4");
+INSERT INTO `comun`(`id`, `precT`, `stock_min`, `stock_max`, `stock_real`) VALUES ("10","1200","4","10","10");
+INSERT INTO `comun`(`id`, `precT`, `stock_min`, `stock_max`, `stock_real`) VALUES ("15","1800","3","6","5");
 
 /*personalizado*/
 INSERT INTO `personalizado`(`id`, `recargo`, `precT`) VALUES ("","","");
 
 /*integra*/
-INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES ("","");
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (1,44);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (1,45);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (1,46);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (1,47);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (1,48);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (2,49);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (2,50);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (2,51);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (2,52);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (2,53);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (3,54);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (3,55);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (3,56);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (3,57);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (3,58);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (4,39);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (4,40);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (4,41);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (4,42);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (4,43);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (5,34);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (5,35);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (5,36);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (5,37);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (5,38);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (6,29);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (6,30);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (6,31);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (6,32);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (6,33);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (7,74);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (7,75);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (7,76);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (7,77);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (7,78);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (8,79);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (8,80);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (8,81);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (8,82);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (8,83);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (9,84);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (9,85);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (9,86);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (9,87);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (9,88);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (10,59);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (10,60);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (10,61);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (10,62);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (10,63);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (10,64);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (10,65);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (10,66);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (10,67);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (10,68);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (21,69);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (21,70);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (21,71);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (21,72);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (21,73);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (15,89);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (15,90);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (15,91);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (15,92);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (15,93);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (15,94);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (15,95);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (15,96);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (15,97);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (15,103);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (15,98);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (15,99);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (15,100);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (15,101);
+INSERT INTO `integra`(`id_menu`, `id_vianda`) VALUES (15,102);
 
-/*ingresa*/
-INSERT INTO `ingresa`(`id_caja`, `id_proceso`, `fecha_ini`, `fecha_fin`) VALUES ("","","","");
+/*envasa*/
+INSERT INTO `envasa`(`id_caja`, `id_vianda`, `id_menu`) VALUES ("","","");
+
+
 
 /*pedido*/
 INSERT INTO `pedido`(`id`, `fecha`, `hora`, `id_tarjeta`, `id_suc`) VALUES ("","","","","");
@@ -543,6 +629,12 @@ INSERT INTO `estado`(`id`, `nombre`) VALUES ("3", "Enviado");
 INSERT INTO `estado`(`id`, `nombre`) VALUES ("4", "Entregado");
 INSERT INTO `estado`(`id`, `nombre`) VALUES ("5", "Rechazado");
 INSERT INTO `estado`(`id`, `nombre`) VALUES ("6", "Devuelto");
+
+/*ingresa*/
+INSERT INTO `ingresa`(`id_caja`, `id_proceso`, `fecha_ini`, `fecha_fin`) VALUES ("","","","");
+
+/*pasa*/
+INSERT INTO `pasa`(`id_pedido`, `id_estado`, `fecha_ini`, `fecha_fin`) VALUES ("","","","");
 
 /*realiza*/
 INSERT INTO `realiza`(`nroCliente`, `id_pedido`, `fecha`, `hora`) VALUES ("","","","");
@@ -569,13 +661,6 @@ INSERT INTO `tarjeta`(`id`, `titular`, `banco`, `num`, `codigo`, `exp`) VALUES (
 
 /*paga*/
 INSERT INTO `paga`(`nroCliente`, `id_pedido`, `fecha`, `hora`) VALUES ("","","","");
-
-/*pasa*/
-INSERT INTO `pasa`(`id_pedido`, `id_estado`, `fecha_ini`, `fecha_fin`) VALUES ("","","","");
-
-
-/*envasa*/
-INSERT INTO `envasa`(`id_caja`, `id_vianda`, `id_menu`) VALUES ("","","");
 
 /*usuario*/
 INSERT INTO `usuario`(`user`, `password`, `rol`) VALUES ("allita","infor","informatico");
