@@ -1,6 +1,5 @@
 /*Consultas No Obligatorias*/
 11.¿Cuantas viandas o cajas hay de cada menú en stock?:
-//esta consulta solo devolverá resultados para aquellos menús comunes que tengan asociadas cajas a través de la tabla envasa. Si hay menús comunes sin cajas asociadas, no aparecerán en el resultado.
 
 SELECT m.id AS id_menu, COUNT(cm.id) AS cajas_en_stock
 FROM menu m
@@ -45,7 +44,7 @@ ORDER BY m.id;
 
 13.¿Cuál fue el menú más pedido en el año?:
 
-// SERA MENU COMUN dificil???
+// MENU COMUN???
 
 SELECT m.id AS id_menu_comun, m.frecuencia, COUNT(*) AS total_pedidos
 FROM pedido p
@@ -118,9 +117,22 @@ WHERE (c.nroCliente=r.nroCliente) AND (r.id_pedido=p.id) AND (p.id_tarjeta=t.id)
 
 20.Promedio de pedidos entregados en el año:
 
+SELECT COUNT(p.id) AS total_pedidos_entregados
+FROM pedido p
+JOIN estado e ON p.id_estado = e.id
+JOIN pasa pa ON p.id = pa.id_pedido
+WHERE 
+    e.nombre = 'entregado' AND 
+    YEAR(p.fecha) = YEAR(CURRENT_DATE) AND 
+    (p.fecha_fin IS NOT NULL AND p.fecha_fin <= CURRENT_DATE);
 
 21.Cantidad de menús desechados:
 
+SELECT cm.*
+FROM caja_menu cm
+JOIN ingresa i ON i.id_caja = cm.id
+JOIN proceso p ON i.id_proceso = p.id
+WHERE p.estado = 'desechado';
 
 22.Menús que alcanzaron el stock mínimo: //corregir
 SELECT m.id AS id_menu, m.frecuencia, c.stock_min, c.stock_max,
@@ -144,14 +156,26 @@ ORDER BY
 
 23.Cantidad de menús personalizados de los últimos 2 meses:
 
+SELECT COUNT(*) AS cant_personalizados_2años
+FROM menu m
+JOIN personalizado pz ON pz.id = m.id
+JOIN integra i ON m.id = i.id_menu
+JOIN vianda v ON i.id_vianda = v.id
+JOIN envasa e ON v.id = e.id_vianda AND m.id = e.id_menu
+JOIN caja_menu cj ON e.id_caja = cj.id
+JOIN contiene c ON cj.id = c.id_caja
+JOIN pedido p ON c.id_pedido = p.id
+WHERE pz.id = m.id AND YEAR(p.fecha) >= YEAR(CURRENT_DATE) - 2;
+
 
 24.Pedidos solicitados el día de ayer que aún no se han procesado:
 
+SELECT p.id
+FROM pedido p, pasa pa, estado e
+WHERE (p.id=pa.id_pedido) AND (pa.id_estado=e.id) AND (e.nombre="solicitado") AND (pa.fecha_ini = DATE(CURRENT_DATE - INTERVAL 1 DAY));
 
 25.Listado de sucursales por departamento:
 
 SELECT *
 FROM sucursal s
 ORDER BY s.departamento;
-
-//parece que dependiendo del tipo de sql que estes usando podrian no funcionar las consultas (ya que deberia variar la sintaxis) investigar con la profe.
